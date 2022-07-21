@@ -1,3 +1,4 @@
+
 // create the team
 const generateTeam = team => {
 
@@ -80,7 +81,7 @@ const generateTeam = team => {
 }
 
 // export function to generate entire page
-module.exports = team => {
+module.exports = (team) => {
 
     return `
     <!DOCTYPE html>
