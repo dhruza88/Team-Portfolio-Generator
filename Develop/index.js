@@ -56,7 +56,7 @@ const start = () => {
                         name: "officeNumber"
                     }).then((addtlAnswer) => {
                         answer['officeNumber'] = addtlAnswer.officeNumber;
-                        handleEmployee(answer);
+                        generateNewID(answer);
                     });
                     break;
 
@@ -68,7 +68,7 @@ const start = () => {
                             name: "gitHub"
                         }).then((addtlAnswer) => {
                             answer['gitHub'] = addtlAnswer.gitHub;
-                            handleEmployee(answer);
+                            generateNewID(answer);
                         });
                     break;
 
@@ -79,7 +79,7 @@ const start = () => {
                         name: "school"
                     }).then((addtlAnswer) => {
                         answer['school'] = addtlAnswer.school;
-                        handleEmployee(answer);
+                        generateNewID(answer);
                     });
                     break;
             }
@@ -88,9 +88,29 @@ const start = () => {
 
 }
 
-const handleEmployee = (compEmp) => {
+const globalUsedIDs = [];
+let globalNewID = 0;
+
+const generateNewID = (compEmp) => {
+
+    const isNewID = Number(Math.floor(Math.random() * 10));
+
+    if (!globalUsedIDs.includes(isNewID)) {
+        compEmp.id = isNewID;
+
+        globalUsedIDs.push(compEmp.id);
+        createEmployee(compEmp)
+    }
+    else {
+        generateNewID(compEmp)
+        console.log(compEmp)
+    }
+}
+
+const createEmployee = (compEmp) =>
+{
+    console.log(compEmp)
     let newEmployee = null;
-    compEmp.id = Number(Math.floor(Math.random() * 10));
     if (compEmp.role.toLowerCase() === 'manager') {
         newEmployee = new Manager(compEmp.id, compEmp.name, compEmp.role, compEmp.email, compEmp.officeNumber);
     }
@@ -110,7 +130,8 @@ const handleEmployee = (compEmp) => {
     }).then((strtAgain) => {
         if (strtAgain.enterAgain === "Yes") {
             start();
-        } else {
+        }
+        else {
             try {
                 const myHTML = generate(employees);
                 writeHTMLFile(myHTML);
@@ -122,8 +143,48 @@ const handleEmployee = (compEmp) => {
                 console.log(err);
             }
         }
-    });
+    })
 }
+
+
+
+
+
+    // let newEmployee = null;
+    // compEmp.id = Number(Math.floor(Math.random() * 10));
+    // if (compEmp.role.toLowerCase() === 'manager') {
+    //     newEmployee = new Manager(compEmp.id, compEmp.name, compEmp.role, compEmp.email, compEmp.officeNumber);
+    // }
+    // if (compEmp.role.toLowerCase() === 'engineer') {
+    //     newEmployee = new Engineer(compEmp.id, compEmp.name, compEmp.role, compEmp.email, compEmp.gitHub);
+    // }
+    // if (compEmp.role.toLowerCase() === 'intern') {
+    //     newEmployee = new Intern(compEmp.id, compEmp.name, compEmp.role, compEmp.email, compEmp.school);
+    // }
+
+    // employees.push(newEmployee);
+    // inquirer.prompt({
+    //     type: "list",
+    //     message: "Enter another employee?",
+    //     choices: ["Yes", "No"],
+    //     name: "enterAgain"
+    // }).then((strtAgain) => {
+    //     if (strtAgain.enterAgain === "Yes") {
+    //         start();
+    //     } else {
+    //         try {
+    //             const myHTML = generate(employees);
+    //             writeHTMLFile(myHTML);
+    //         } catch (err) {
+    //             console.log(' ERROR ');
+    //             console.log(' ERROR ');
+    //             console.log(' ERROR ');
+    //             console.log('  ');
+    //             console.log(err);
+    //         }
+    //     }
+    // });
+// }
 const writeHTMLFile = (html) => {
     const fs = require('fs');
     try {
