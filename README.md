@@ -4,7 +4,7 @@
 ## Description
 Using the terminal to enter in data for team manager, engineeers, and interns. So that the user can dynamically create a roster layout of team members with releveant data.
 
-*Keynote the ID to each individual worker is randomly assigned by a random value function, rather than the user inputting it themself*
+*KEYNOTE: the ID to each individual worker is randomly assigned by a random value function, rather than the user inputting it themself*
 
 ## Table of Contents
 
