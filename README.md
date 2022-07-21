@@ -5,7 +5,7 @@
 Using the terminal to enter in data for team manager, engineeers, and interns. So that the user can dynamically create a roster layout of team members with releveant data.
 
 *KEYNOTE: the ID to each individual worker is randomly assigned by a random value function, rather than the user inputting it themself*
-*Also if you look at the index file included in this submission i ran another attempt after the video, and in this attempt there is no duplicate ID number for either users*
+*Also if you look at the index file included in this submission the ID in the video did come back duplicate, i have since updated the file to create a unique ID number that will not be repeated for any user*
 
 ## Table of Contents
 
