@@ -20,13 +20,22 @@ Using the terminal to enter in data for team manager, engineeers, and interns. S
 
 ## Installation
 npm i inquirer
+
 npm i fs
 
 ## Usage
 the user will be prompted to enter data for the team manager. Then be asked to choose what type of team member they would like to add and continue through the process. The id number is randomly assigned by a random number funcdtion.
 
 ## Credits
-inquirer, fs, stackoverflow, google, w3schools
+inquirer,
+
+fs,
+
+stackoverflow,
+
+google,
+
+w3schools
 
 ## License
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
