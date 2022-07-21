@@ -1,19 +1,25 @@
 const Intern = require("../lib/Intern");
+const mockData = {
+  mockId: 100,
+  mockName: 'Alice',
+  mockEmail: 'test@test.com',
+  mockRoleIntern: 'Intern',
+  mockGitHub: 'GitHubUser',
+  mockOfficeNumber: 100,
+  mockSchool: 'UCLA'
+}
 
 test("Can set school via constructor", () => {
-  const testValue = "UCLA";
-  const e = new Intern("Foo", 1, "test@test.com", testValue);
-  expect(e.school).toBe(testValue);
+  const e = new Intern(mockData.mockId, mockData.mockName, mockData.mockRoleIntern, mockData.mockEmail, mockData.mockSchool);
+  expect(e.school).toBe(mockData.mockSchool);
 });
 
 test("getRole() should return \"Intern\"", () => {
-  const testValue = "Intern";
-  const e = new Intern("Foo", 1, "test@test.com", "UCLA");
-  expect(e.getRole()).toBe(testValue);
+  const e = new Intern(mockData.mockId, mockData.mockName, mockData.mockRoleIntern, mockData.mockEmail, mockData.mockSchool);
+  expect(e.getRole()).toBe(mockData.mockRoleIntern);
 });
 
 test("Can get school via getSchool()", () => {
-  const testValue = "UCLA";
-  const e = new Intern("Foo", 1, "test@test.com", testValue);
-  expect(e.getSchool()).toBe(testValue);
+  const e = new Intern(mockData.mockId, mockData.mockName, mockData.mockRoleIntern, mockData.mockEmail, mockData.mockSchool);
+  expect(e.getSchool()).toBe(mockData.mockSchool);
 });

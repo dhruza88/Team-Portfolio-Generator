@@ -5,6 +5,7 @@ const Intern = require("./lib/Intern");
 const generate = require("./util/generateHtml")
 const employees = [];
 
+
 const start = () => {
     const promptQuestions =
         employees.length > 0 ?
@@ -89,6 +90,7 @@ const start = () => {
 
 const handleEmployee = (compEmp) => {
     let newEmployee = null;
+    compEmp.id = Number(Math.floor(Math.random() * 10));
     if (compEmp.role.toLowerCase() === 'manager') {
         newEmployee = new Manager(compEmp.id, compEmp.name, compEmp.role, compEmp.email, compEmp.officeNumber);
     }
@@ -109,12 +111,9 @@ const handleEmployee = (compEmp) => {
         if (strtAgain.enterAgain === "Yes") {
             start();
         } else {
-            // console.log(' Current Employee List');
-            // console.log(employees);
             try {
                 const myHTML = generate(employees);
-                res.setHeader("Content-Type", "text/html")
-                res.send(myHTML);
+                writeHTMLFile(myHTML);
             } catch (err) {
                 console.log(' ERROR ');
                 console.log(' ERROR ');
@@ -122,11 +121,35 @@ const handleEmployee = (compEmp) => {
                 console.log('  ');
                 console.log(err);
             }
-
-            // console.log();
-            // console.log('Good Bye!');
-            // console.log();
         }
+    });
+}
+const writeHTMLFile = (html) => {
+    const fs = require('fs');
+    try {
+      fs.writeFileSync('./dist/html/index.html', html);
+      setTimeout(() => {
+        readHTMLFile();
+      }, 2000);
+    } catch (err) {
+      console.error(err);
+    }
+}
+const readHTMLFile = () => {
+    console.log('attempting open file');
+    var http = require('http'),
+    fs = require('fs');
+
+    fs.readFile('./dist/html/index.html', function (err, html) {
+        if (err) {
+            throw err;
+        }
+        http.createServer(
+            function (request, response) {
+                response.writeHeader(200, { "Content-Type": "text/html" });
+                response.write(html);
+                response.end();
+            }).listen(8000);
     });
 }
 

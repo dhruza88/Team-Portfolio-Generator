@@ -1,20 +1,27 @@
 const Manager = require("../lib/Manager");
 const Employee = require("../lib/Employee");
 
+const mockData = {
+  mockId: 100,
+  mockName: 'Alice',
+  mockEmail: 'test@test.com',
+  mockRoleManager: 'Manager',
+  mockGitHub: 'GitHubUser',
+  mockOfficeNumber: 100,
+  mockSchool: 'UCLA'
+}
+
 test("Can set office number via constructor argument", () => {
-  const testValue = 100;
-  const e = new Manager("Foo", 1, "test@test.com", testValue);
-  expect(e.officeNumber).toBe(testValue);
+  const e = new Manager(mockData.mockId, mockData.mockName, mockData.mockRoleManager, mockData.mockEmail, mockData.officeNumber);
+  expect(e.officeNumber).toBe(mockData.officeNumber);
 });
 
 test('getRole() should return "Manager"', () => {
-  const testValue = "Manager";
-  const e = new Manager("Foo", 1, "test@test.com", 100);
-  expect(e.getRole()).toBe(testValue);
+  const e = new Manager(mockData.mockId, mockData.mockName, mockData.mockRoleManager, mockData.mockEmail, mockData.officeNumber);
+  expect(e.getRole()).toBe(mockData.mockRoleManager);
 });
 
 test("Can get office number via getOffice()", () => {
-  const testValue = 100;
-  const e = new Manager("Foo", 1, "test@test.com", testValue);
-  expect(e.getOfficeNumber()).toBe(testValue);
+  const e = new Manager(mockData.mockId, mockData.mockName, mockData.mockRoleManager, mockData.mockEmail, mockData.officeNumber);
+  expect(e.getOfficeNumber()).toBe(mockData.officeNumber);
 });

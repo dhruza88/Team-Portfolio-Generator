@@ -1,4 +1,13 @@
 const Employee = require("../lib/Employee");
+const mockData = {
+  mockId: 100,
+  mockName: 'Alice',
+  mockEmail: 'test@test.com',
+  mockRoleEngineer: 'Engineer',
+  mockGitHub: 'GitHubUser',
+  mockOfficeNumber: 100,
+  mockSchool: 'UCLA'
+}
 
 test("Can instantiate Employee instance", () => {
   const e = new Employee();
@@ -6,43 +15,36 @@ test("Can instantiate Employee instance", () => {
 });
 
 test("Can set name via constructor arguments", () => {
-  const name = "Alice";
-  const e = new Employee(name);
-  expect(e.name).toBe(name);
+  const e = new Employee(mockData.mockId, mockData.mockName, mockData.mockRoleEngineer, mockData.mockEmail);
+  expect(e.name).toBe(mockData.mockName);
 });
 
 test("Can set id via constructor argument", () => {
-  const testValue = 100;
-  const e = new Employee("Foo", testValue);
-  expect(e.id).toBe(testValue);
+  const e = new Employee(mockData.mockId, mockData.mockName, mockData.mockRoleEngineer, mockData.mockEmail);
+  expect(e.id).toBe(mockData.mockId);
 });
 
 test("Can set email via constructor argument", () => {
-  const testValue = "test@test.com";
-  const e = new Employee("Foo", 1, testValue);
-  expect(e.email).toBe(testValue);
+  const e = new Employee(mockData.mockId, mockData.mockName, mockData.mockRoleEngineer, mockData.mockEmail);
+  expect(e.email).toBe(mockData.mockEmail);
 });
 
 test("Can get name via getName()", () => {
-  const testValue = "Alice";
-  const e = new Employee(testValue);
-  expect(e.getName()).toBe(testValue);
+  const e = new Employee(mockData.mockId, mockData.mockName, mockData.mockRoleEngineer, mockData.mockEmail);
+  expect(e.getName()).toBe(mockData.mockName);
 });
 
 test("Can get id via getId()", () => {
-  const testValue = 100;
-  const e = new Employee("Foo", testValue);
-  expect(e.getId()).toBe(testValue);
+  const e = new Employee(mockData.mockId, mockData.mockName, mockData.mockRoleEngineer, mockData.mockEmail);
+  expect(e.getId()).toBe(mockData.mockId);
 });
 
 test("Can get email via getEmail()", () => {
-  const testValue = "test@test.com";
-  const e = new Employee("Foo", 1, testValue);
-  expect(e.getEmail()).toBe(testValue);
+  const e = new Employee(mockData.mockId, mockData.mockName, mockData.mockRoleEngineer, mockData.mockEmail);
+  expect(e.getEmail()).toBe(mockData.mockEmail);
 });
 
 test("getRole() should return \"Employee\"", () => {
-  const testValue = "Employee";
-  const e = new Employee("Alice", 1, "test@test.com");
-  expect(e.getRole()).toBe(testValue);
+  const e = new Employee(mockData.mockId, mockData.mockName, mockData.mockRoleEngineer, mockData.mockEmail);
+  expect(e.getRole()).toBe(mockData.mockRoleEngineer);
 });
