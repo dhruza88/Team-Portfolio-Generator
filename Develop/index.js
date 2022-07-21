@@ -67,7 +67,7 @@ const start = () => {
                             message: "What is your github?",
                             name: "gitHub"
                         }).then((addtlAnswer) => {
-                            answer['github'] = addtlAnswer.gitHub;
+                            answer['gitHub'] = addtlAnswer.gitHub;
                             handleEmployee(answer);
                         });
                     break;
@@ -127,30 +127,21 @@ const handleEmployee = (compEmp) => {
 const writeHTMLFile = (html) => {
     const fs = require('fs');
     try {
-      fs.writeFileSync('./dist/html/index.html', html);
-      setTimeout(() => {
-        readHTMLFile();
-      }, 2000);
+        fs.writeFileSync('./dist/html/index.html', html);
+        setTimeout(() => {
+            readHTMLFile();
+        }, 2000);
     } catch (err) {
-      console.error(err);
+        console.error(err);
     }
 }
 const readHTMLFile = () => {
     console.log('attempting open file');
-    var http = require('http'),
-    fs = require('fs');
+    try {
 
-    fs.readFile('./dist/html/index.html', function (err, html) {
-        if (err) {
-            throw err;
-        }
-        http.createServer(
-            function (request, response) {
-                response.writeHeader(200, { "Content-Type": "text/html" });
-                response.write(html);
-                response.end();
-            }).listen(8000);
-    });
+    } catch (err) {
+        console.log('error trying to open/read');
+    }
 }
 
 start()

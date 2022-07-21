@@ -11,7 +11,7 @@ const mockData = {
 
 test("Can set mockGitHub account via constructor", () => {
   const e = new Engineer(mockData.mockId, mockData.mockName, mockData.mockRoleEngineer, mockData.mockEmail, mockData.mockGitHub);
-  expect(e.github).toBe(mockData.mockGitHub);
+  expect(e.gitHub).toBe(mockData.mockGitHub);
 });
 
 test("getRole() should return \"Engineer\"", () => {
