@@ -28,13 +28,9 @@ the user will be prompted to enter data for the team manager. Then be asked to c
 
 ## Credits
 inquirer,
-
 fs,
-
 stackoverflow,
-
 google,
-
 w3schools
 
 ## License
