@@ -48,7 +48,7 @@ n/a
 try your own data
 
 ## Questions
-[www.github.com/dhruza88](www.github.com/dhruza88) <br />
+[https://www.github.com/dhruza88](https://www.github.com/dhruza88) <br />
 davidhruza@gmail.com
 
 
